@@ -113,6 +113,30 @@ public final class DoubleLife extends JavaPlugin implements Listener {
                 return true;
             }
             switch (args[0]) {
+
+                case "lives":
+
+
+                    // TODO - lots more checks for valid input
+                    sender.sendMessage(args[1].toString());
+
+                    Player tPlayer = Bukkit.getPlayer(args[1].toString());
+
+                    UUID playerUUID = tPlayer.getUniqueId();
+
+                    sender.sendMessage(playerUUID);
+
+                    UserPair upair = gameData.uuidUserPair.get(playerUUID);
+
+                    sender.sendMessage(String.valueOf(upair.sharedLives));
+
+                    upair.sharedLives = upair.sharedLives + Integer.parseInt(args[1]); // TODO - Test
+//                    upair.sharedLives = upair.sharedLives + 1;
+
+                    // TODO - code that alerts players
+
+
+                    break;
                 case "start":
                     if (gameStarted) {
                         sender.sendMessage(ChatColor.RED + "The game has already started!");
@@ -697,6 +721,21 @@ public final class DoubleLife extends JavaPlugin implements Listener {
             event.getPlayer().sendTitle(ChatColor.BLACK + "YOU ARE DEAD", "", 10, 40, 10);
         }
     }
+
+// TODO - it would be great if we could get these to display when lives are changed for people - try to not just duplicate the function (?)
+//    public void showLivesScreen(Us) {
+//
+//        if (pair.sharedLives > 2) {
+//            pair.getPlayer().sendTitle(ChatColor.GREEN + String.valueOf(pair.sharedLives), ChatColor.GREEN + "Lives remaining...", 10, 40, 10);
+//        } else if (pair.sharedLives == 2) {
+//            pair.getPlayer().sendTitle(ChatColor.YELLOW + String.valueOf(pair.sharedLives), ChatColor.YELLOW + "Lives remaining...", 10, 40, 10);
+//        } else if (pair.sharedLives == 1) {
+//            event.getPlayer().sendTitle(ChatColor.RED + String.valueOf(pair.sharedLives), ChatColor.RED + "Lives remaining...", 10, 40, 10);
+//        } else {
+//            event.getPlayer().sendTitle(ChatColor.BLACK + "YOU ARE DEAD", "", 10, 40, 10);
+//        }
+//    }
+
 
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event) {
