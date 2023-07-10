@@ -76,7 +76,7 @@
             <artifactId>craftbukkit</artifactId>
             <version>1.0</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/craftbukkit-1.19-R0.1-SNAPSHOT.jar</systemPath>
+            <systemPath>${project.basedir}/craftbukkit-1.19.jar</systemPath>
         </dependency>
 
     </dependencies>
